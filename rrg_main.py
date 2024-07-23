@@ -102,6 +102,12 @@ st.write('\** max shows entire history since 2018')
 # Create the Plotly figure
 fig = go.Figure()
 
+fig.add_shape(type="rect", x0=0, y0=0, x1=3.2, y1=2.2, fillcolor="lightgreen", opacity=0.3, layer="below", line_width=0)
+fig.add_shape(type="rect", x0=-3.2, y0=0, x1=0, y1=2.2, fillcolor="lightblue", opacity=0.3, layer="below", line_width=0)
+fig.add_shape(type="rect", x0=-3.2, y0=-2.2, x1=0, y1=0, fillcolor="#FFCCCB", opacity=0.3, layer="below", line_width=0)
+fig.add_shape(type="rect", x0=0, y0=-2.2, x1=3.2, y1=0, fillcolor="lightyellow", opacity=0.3, layer="below", line_width=0)
+
+
 # Add scatter and line plots with different colors for each sector
 for i, (etf_names, etf) in enumerate(tickers_names.items()):
     fig.add_trace(go.Scatter(
@@ -121,8 +127,8 @@ for i, (etf_names, etf) in enumerate(tickers_names.items()):
     ))
 
 # Add quadrants and annotations
-fig.add_shape(type="line", x0=0, y0=-2.2, x1=0, y1=2.2, line=dict(color="white", width=2))
-fig.add_shape(type="line", x0=-3.2, y0=0, x1=3.2, y1=0, line=dict(color="white", width=2))
+fig.add_shape(type="line", x0=0, y0=-2.2, x1=0, y1=2.2, line=dict(color='rgba(200, 200, 200, 1)', width=3))
+fig.add_shape(type="line", x0=-3.2, y0=0, x1=3.2, y1=0, line=dict(color='rgba(200, 200, 200, 1)', width=3))
 fig.add_annotation(x=1.5, y=1.5, text='Leading'.upper(), showarrow=False)
 fig.add_annotation(x=1.5, y=-1.5, text='Weakening'.upper(), showarrow=False)
 fig.add_annotation(x=-1.5, y=-1.5, text='Lagging'.upper(), showarrow=False)
@@ -130,6 +136,9 @@ fig.add_annotation(x=-1.5, y=1.5, text='Improving'.upper(), showarrow=False)
 
 # Update layout
 fig.update_layout(
+    autosize=False,
+    width=1600,
+    height=800,
     title='Relative Rotation Graph'.upper(),
     xaxis_title='Relative Strength'.upper(),
     yaxis_title='Rate of Change (ROC) - Momentum'.upper(),

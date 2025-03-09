@@ -96,8 +96,8 @@ elif lookback_period_selection == '50D':
 elif lookback_period_selection == 'MAX**':
     lookback_period = 0
 
-st.write(r'\* LTD: Last Trading Day')
-st.write(r'\** max shows entire history since 2018')
+st.write('\* LTD: Last Trading Day')
+st.write('\** max shows entire history since 2018')
 
 # Create the Plotly figure
 fig = go.Figure()
